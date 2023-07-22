@@ -1,4 +1,6 @@
-const name1 = "sami"
-const name2 = "bob"
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
 
-module.exports = {name1,name2}
+module.exports = { add, subtract, multiply, divide };
