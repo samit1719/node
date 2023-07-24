@@ -1,6 +1,9 @@
-const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
+const fs = require('fs')
 
-module.exports = { add, subtract, multiply, divide };
+const rs = fs.createReadStream('./files/lorem.txt',{encoding: 'utf-8'})
+
+const ws = fs.createWriteStream('./files/new-lorem.txt')
+
+rs.on('data',(datachunk)=>{
+    ws.write(datachunk)
+})
