@@ -1,9 +1,19 @@
+const {format} = require('date-fns')
+const {v4:uuid} = require('uuid')
+
 const fs = require('fs')
+const fsPromises = require('fs').promises
+const path = require('path')
 
-const rs = fs.createReadStream('./files/lorem.txt',{encoding: 'utf-8'})
+const logEvents = async(message) =>{
+    const dateRime = `${format(new Date(), 'yyyyMMdd\ :mm:ss')}`
+    const logItem = `${dateTime}\t${uuid()}\t${message}`
+    console.log(LogItem)
+    try{
+        await fsPromises.appendFile(path.join(__dirname,'logs','eventLog.txt'),logItem)
+    }catch(err){
+        console.log(err)
+    }
+}
 
-const ws = fs.createWriteStream('./files/new-lorem.txt')
-
-rs.on('data',(datachunk)=>{
-    ws.write(datachunk)
-})
+module.exports = logEvents
